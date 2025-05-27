@@ -53,5 +53,5 @@ Această aplicație permite utilizatorilor să creeze, editeze și vizualizeze r
 
 Pentru a rula testele:
 ```bash
-python manage.py test recipes
+python manage.py test 
 ```
