@@ -1,0 +1,15 @@
+
+{% extends 'recipes/base.html' %}
+
+{% block title %}Confirmare Ștergere Rețetă{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Ești sigur că vrei să ștergi această rețetă?</h2>
+<p><strong>{{ object.title }}</strong></p>
+
+<form method="post" class="d-flex gap-2">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Da, șterge</button>
+    <a href="{% url 'recipe-detail' object.pk %}" class="btn btn-secondary">Nu, renunță</a>
+</form>
+{% endblock %}

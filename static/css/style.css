@@ -1,0 +1,9 @@
+/* Fundal general pe tot ecranul cu fundal22.png */
+body.bg-custom {
+    background-image: url("../images/fundal22.png");
+    background-size: cover;           /* imaginea acoperă tot ecranul */
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    min-height: 100vh;
+}

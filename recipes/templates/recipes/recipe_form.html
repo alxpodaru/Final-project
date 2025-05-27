@@ -1,0 +1,20 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}Formular Rețetă{% endblock %}
+
+{% block content %}
+<h2>{% if form.instance.pk %}Editează rețeta{% else %}Adaugă rețetă nouă{% endif %}</h2>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {% for field in form %}
+        <div class="mb-3">
+            {{ field.label_tag }}
+            {{ field }}
+            <div class="text-danger small">{{ field.errors }}</div>
+        </div>
+    {% endfor %}
+    <button type="submit" class="btn btn-success">Salvează</button>
+</form>
+{% endblock %}

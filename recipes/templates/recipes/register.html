@@ -1,0 +1,39 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}Înregistrare{% endblock %}
+
+{% block content %}
+<h2>Înregistrare cont nou</h2>
+<form method="post">
+    {% csrf_token %}
+
+    <div class="mb-3">
+        {{ form.username.label_tag }}
+        {{ form.username }}
+        {{ form.username.errors }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.email.label_tag }}
+        {{ form.email }}
+        {{ form.email.errors }}
+    </div>
+
+    <div class="mb-3">
+        {{ form.password.label_tag }}
+        {{ form.password }}
+        {{ form.password.errors }}
+    </div>
+
+    {# Dacă confirm_password nu există în formular, șterge acest bloc #}
+    {% if form.confirm_password %}
+    <div class="mb-3">
+        {{ form.confirm_password.label_tag }}
+        {{ form.confirm_password }}
+        {{ form.confirm_password.errors }}
+    </div>
+    {% endif %}
+
+    <button type="submit" class="btn btn-primary">Creează cont</button>
+</form>
+{% endblock %}

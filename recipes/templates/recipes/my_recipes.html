@@ -1,0 +1,31 @@
+{% extends 'recipes/base.html' %}
+
+{% block title %}Rețetele Mele{% endblock %}
+
+{% block content %}
+<h2 class="mb-4">Rețetele mele</h2>
+
+{% if user.is_authenticated %}
+    <div class="mb-3 text-center">
+        <a href="{% url 'recipe-add' %}" class="btn btn-success btn-sm">Adaugă rețetă</a>
+    </div>
+{% endif %}
+
+{% if recipes %}
+    <div class="row">
+        {% for recipe in recipes %}
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ recipe.title }}</h5>
+                        <p class="card-text">{{ recipe.ingredients|truncatewords:15 }}</p>  <!-- modificat -->
+                        <a href="{% url 'recipe-detail' recipe.pk %}" class="btn btn-outline-primary btn-sm">Detalii</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% else %}
+    <p>Nu ai postat nicio rețetă încă.</p>
+{% endif %}
+{% endblock %}

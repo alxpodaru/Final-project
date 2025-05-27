@@ -1,0 +1,18 @@
+{% extends 'recipes/base.html' %}
+{% load static %}
+
+{% block title %}{{ recipe.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ recipe.title }}</h2>
+
+<p><strong>Ingrediente:</strong> {{ recipe.ingredients }}</p>
+<p><strong>Timp de gătire:</strong> {{ recipe.cook_time }} min</p>
+<p><strong>Creată la:</strong> {{ recipe.created_at|date:"d M Y H:i" }}</p>
+<p><strong>Autor:</strong> {{ recipe.user.username }}</p>
+
+{% if user == recipe.user %}
+    <a href="{% url 'recipe-edit' recipe.pk %}" class="btn btn-warning btn-sm">Editează</a>
+    <a href="{% url 'recipe-delete' recipe.pk %}" class="btn btn-danger btn-sm">Șterge</a>
+{% endif %}
+{% endblock %}
